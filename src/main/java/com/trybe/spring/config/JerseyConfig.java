@@ -1,8 +1,8 @@
-package com.trybe.trybespring.config;
+package com.trybe.spring.config;
 
-import com.trybe.trybespring.application.BookController;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
+import com.trybe.spring.application.BookController;
 
 @Component
 public class JerseyConfig extends ResourceConfig {

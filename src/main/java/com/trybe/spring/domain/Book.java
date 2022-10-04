@@ -1,4 +1,4 @@
-package com.trybe.trybespring.domain;
+package com.trybe.spring.domain;
 
 import java.util.UUID;
 

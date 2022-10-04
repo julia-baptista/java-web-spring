@@ -1,7 +1,7 @@
-package com.trybe.trybespring.application;
+package com.trybe.spring.application;
 
 import org.springframework.stereotype.Controller;
-import com.trybe.trybespring.domain.Book;
+import com.trybe.spring.domain.Book;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -14,7 +14,6 @@ import java.util.UUID;
 // import javax.ws.rs.Consumes;
 // import javax.ws.rs.Produces;
 // import javax.ws.rs.QueryParam;
-import javax.websocket.server.PathParam;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
@@ -51,16 +50,17 @@ public class BookController {
     }
   }
 
+
   @PUT
   @Path("/{id}")
   @Consumes("application/json")
   @Produces("application/json")
-  public Response update(@PathParam("id") UUID id, String name, String author) {
+  public Response update(@PathParam("id") UUID id, Book bookToUpdate) {
     try {
       Book book = books.stream().filter(b -> b.getId().equals(id)).findAny().orElseThrow();
 
-      book.setName(name);
-      book.setAuthor(author);
+      book.setName(bookToUpdate.getName());
+      book.setAuthor(bookToUpdate.getAuthor());
 
       return Response.ok(book).build();
 
@@ -68,6 +68,7 @@ public class BookController {
       return Response.status(404).build();
     }
   }
+
 
   @DELETE
   @Path("/{id}")
